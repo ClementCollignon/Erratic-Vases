@@ -1,7 +1,5 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from stl import mesh
-from scipy.interpolate import interp1d
 
 height=100
 radius=40
