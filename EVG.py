@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from stl import mesh
 from scipy.interpolate import interp1d
+
 height=100
 radius=40
 Nz=5
@@ -13,18 +14,6 @@ limit=15
 
 A=0
 
-D=np.genfromtxt('curve/curbe1.txt')
-x=D[:,0]
-y=D[:,1]
-x[0]=0
-y[0]=0
-x=x/np.max(x)
-y=y/np.max(y)
-
-x=x*height*1
-y=y*A
-
-profile=interp1d(x,y)
 
 def create(height,radius,Nz,Nr,zoffset):
     
@@ -45,7 +34,7 @@ def create(height,radius,Nz,Nr,zoffset):
             theta=i/N*np.pi*2+offset
             z=j*zstep
         
-            Radius=r +profile(z)
+            Radius=r
             
             
             x=Radius*np.cos(theta)
@@ -73,20 +62,19 @@ def create(height,radius,Nz,Nr,zoffset):
              faces.append([0,i1,i2])
     
     #Side faces:
-
     for j in range(N2-1):
         for i in range(N):
         
             if j%2==0:
                 i1=i+1+j*N
                 i2=i+2+j*N
-                i3=i+(j+1)*N+1
+                i3=i+1+(j+1)*N
                 if i2==(j+1)*N+1:
                     i2=1+j*N
             else:
                 i1=j*N+1+i
                 i2=j*N+2+i
-                i3=(j+1)*N+2+i
+                i3=i+2+(j+1)*N
                 if i2==j*N+N+1:
                     i2=j*N+1
                 if i3==(j+1)*N+N+1:
@@ -124,6 +112,8 @@ def create(height,radius,Nz,Nr,zoffset):
 
 v1,f1=create(height,radius,Nz,Nr,0)
 v2,f2=create(height,radius-wall,Nz,Nr,wall)
+
+print(f1)
 
 f2+=Nz*Nr+1
 
@@ -187,6 +177,9 @@ faces=np.append(faces,fclose,axis=0)
 faces=np.asarray(faces)
 # Create the mesh
 vase = mesh.Mesh(np.zeros(faces.shape[0], dtype=mesh.Mesh.dtype))
+
+print(faces.shape, vertices.shape )
+
 for i, f in enumerate(faces):
     for j in range(3):
         vase.vectors[i][j] = vertices[f[j],:]
