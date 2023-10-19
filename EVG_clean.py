@@ -107,11 +107,11 @@ height=100
 radius=40
 number_points_z=5
 number_points_theta=10
-wall=2
-limit=15
+wall_thickness=2
+maximum_randomness=15
 
 v1,f1=create_surface(height,radius,number_points_z,number_points_theta,0)
-v2,f2=create_surface(height,radius-wall,number_points_z,number_points_theta,wall)
+v2,f2=create_surface(height,radius-wall_thickness,number_points_z,number_points_theta,wall_thickness)
 
 f2+=number_points_z*number_points_theta+1
 
@@ -137,10 +137,10 @@ for i in range(number_points_theta):
 
 fclose=np.asarray(fclose)
 
-offset=limit/2
+offset=maximum_randomness/2
 for i in range(1,number_points_theta+1):
-    x=np.random.rand()*limit-offset
-    y=np.random.rand()*limit-offset
+    x=np.random.rand()*maximum_randomness-offset
+    y=np.random.rand()*maximum_randomness-offset
     v1[i][0]+=x
     v1[i][1]+=y
     v2[i][0]+=x
@@ -149,14 +149,14 @@ for i in range(1,number_points_theta+1):
 for i in range(number_points_theta+1,len(v1)):
     signe1=1
     signe2=1
-    if np.random.rand()*limit-offset < 0:
+    if np.random.rand()*maximum_randomness-offset < 0:
         sign1=-1
-    if np.random.rand()*limit-offset < 0:
+    if np.random.rand()*maximum_randomness-offset < 0:
         signumber_points_z=-1
     
-    x=np.random.rand()*limit-offset
-    y=np.random.rand()*limit-offset
-    z=np.random.rand()*limit-offset
+    x=np.random.rand()*maximum_randomness-offset
+    y=np.random.rand()*maximum_randomness-offset
+    z=np.random.rand()*maximum_randomness-offset
     vec=np.asarray([x,y,z])
     v1[i][0]+=x
     v1[i][1]+=y
