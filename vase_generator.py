@@ -2,7 +2,7 @@ import numpy as np
 from stl import mesh
 
 class VaseGenerator(object):
-    """Creates vase with a given number of vertices that are randomly distributed in (x, y, z).
+    """Creates stl file for a 3D printable vase with a given number of vertices that are randomly distributed in (x, y, z).
     Attributes:
     height: the nominal height of the vase in mm.
     radius: the nominal radius of the vase in mm.
@@ -23,6 +23,13 @@ class VaseGenerator(object):
         self.zstep = self.height / ( self.number_points_z - 1 )
     
     def generate_random_vase(self, path):
+        """This is the only public method.
+        Generate a stl file for a vase wih random vertices positions.
+        The properties of the vase will follow the attributes of the class.
+        The stl file will be named vase_{4 randim numbers}.stl
+    Args:
+        path: path where the stl file will be saved.
+    """
         number=int(np.random.rand()*10000)
         vertices, surface = self.__create_vertices_faces_vase()
         vase = self.__create_vase(vertices, surface)
