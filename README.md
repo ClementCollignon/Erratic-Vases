@@ -12,7 +12,7 @@ pip install numpy-stl
 
 ## Example: a triptych in wood filament
 
-```
+``` python
 from vase_generator import Vase
 
 height              = 100 #mm  
