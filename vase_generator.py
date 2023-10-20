@@ -61,7 +61,6 @@ class Vase(object):
             return [0, index_1, index_2]
         return [0, index_2, index_1]
         
-
     def append_bottom_faces(self, faces, inner):
         for i in range(self.number_points_theta):
             face = self.get_bottom_face(i, inner)
