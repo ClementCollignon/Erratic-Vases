@@ -1,7 +1,7 @@
 import numpy as np
 from stl import mesh
 
-class Vase(object):
+class VaseGenerator(object):
     """Creates vase with a given number of vertices that are randomly distributed in (x, y, z).
     Attributes:
     height: the nominal height of the vase in mm.
