@@ -2,6 +2,17 @@ import numpy as np
 from stl import mesh
 
 class Vase(object):
+    """Creates vase with a given number of vertices that are randomly distributed in (x, y, z).
+    Attributes:
+    height: the nominal height of the vase in mm.
+    radius: the nominal radius of the vase in mm.
+    number_of_points_z: the number of vertices along the height of the vase.
+    number_of_points_theta: the number of vertices along the perimeter of the vase.
+    wall_thickness: the thicnkess of the walls of the vase in mm.
+    randomness: the maximum displacement of the vertices in mm with respect to their original position.
+    Note that the final height and radius of the vase will vary because of the randomness.
+    """
+
     def __init__(self, height, radius, number_points_z, number_points_theta, wall_thickness, randomness):
         self.height = height
         self.radius = radius
