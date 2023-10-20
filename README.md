@@ -23,7 +23,8 @@ number_points_z     =   5
 number_points_theta =  10  
 
 
-generator = VaseGenerator(height, radius, number_points_z, number_points_theta, wall_thickness, maximum_randomness)  
+generator = VaseGenerator(height, radius, number_points_z, number_points_theta, 
+                            wall_thickness, maximum_randomness)  
 
 generator.generate_random_vase('')  
 generator.generate_random_vase('')  
