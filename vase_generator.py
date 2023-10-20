@@ -27,9 +27,9 @@ class VaseGenerator(object):
         Generate a stl file for a vase wih random vertices positions.
         The properties of the vase will follow the attributes of the class.
         The stl file will be named vase_{4 randim numbers}.stl
-    Args:
-        path: path where the stl file will be saved.
-    """
+        Args:
+            path: path where the stl file will be saved.
+        """
         number=int(np.random.rand()*10000)
         vertices, surface = self.__create_vertices_faces_vase()
         vase = self.__create_vase(vertices, surface)
